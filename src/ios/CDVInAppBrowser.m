@@ -64,6 +64,13 @@
         NSLog(@"IAB.close() called but it was already closed.");
         return;
     }
+
+    UIView *lastView;
+    for(UIView *subView in [self.viewController.view subViews]) {
+	lastView = subView;
+    }
+    [lastView removeFromSuperview];
+	
     // Things are cleaned up in browserExit.
     [self.inAppBrowserViewController close];
 }
@@ -246,7 +253,14 @@
             [tmpWindow setWindowLevel:UIWindowLevelNormal];
 
             [tmpWindow makeKeyAndVisible];
-            [tmpController presentViewController:nav animated:YES completion:nil];
+//             [tmpController presentViewController:nav animated:YES completion:nil];
+	    self.inAppBrowserViewController.view.frame = 
+		CGRectMake(0,
+			   20,
+			   self.inAppBrowserViewController.view.frame.size.width,
+			   self.inAppBrowserViewController.view.frame.size.height - 20
+		);
+	    [self.viewController.view addSubview:self.inAppBrowserViewController.view];
         }
     });
 }
