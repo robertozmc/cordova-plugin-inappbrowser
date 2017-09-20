@@ -66,8 +66,8 @@
     }
 
     UIView *lastView;
-    for(UIView *subView in [self.viewController.view subViews]) {
-	lastView = subView;
+    for(UIView *subview in [self.viewController.view subviews]) {
+	lastView = subview;
     }
     [lastView removeFromSuperview];
 	
