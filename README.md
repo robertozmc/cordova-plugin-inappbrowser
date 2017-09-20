@@ -1,3 +1,5 @@
+Added changes to display Camera over InAppBrowser (https://stackoverflow.com/a/39226490)
+
 ---
 title: Inappbrowser
 description: Open an in-app browser window.
